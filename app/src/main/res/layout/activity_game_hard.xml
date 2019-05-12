@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        tools:context=".GameHardActivity" >
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+    >
+
+        <Chronometer
+                android:id="@+id/GameTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quantidade de erros:"
+        />
+
+        <TextView
+                android:id="@+id/GameMistakes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+        />
+
+
+
+    </LinearLayout>
+
+    <include
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            layout="@layout/game_hard_imagens"
+
+    />
+
+    <!--<GridLayout-->
+
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:columnCount="4"-->
+    <!--&gt;-->
+
+
+        <!--<ImageView-->
+                <!--android:src="@drawable/duvida"-->
+                <!--android:layout_width="270px"-->
+                <!--android:layout_height="270px"-->
+        <!--/>-->
+
+        <!--<ImageView-->
+                <!--android:src="@drawable/duvida"-->
+                <!--android:layout_width="270px"-->
+                <!--android:layout_height="270px"-->
+        <!--/>-->
+
+        <!--<ImageView-->
+                <!--android:src="@drawable/duvida"-->
+                <!--android:layout_width="270px"-->
+                <!--android:layout_height="270px"-->
+        <!--/>-->
+
+        <!--<ImageView-->
+                <!--android:src="@drawable/duvida"-->
+                <!--android:layout_width="270px"-->
+                <!--android:layout_height="270px"-->
+        <!--/>-->
+
+        <!--<ImageView-->
+                <!--android:src="@drawable/duvida"-->
+                <!--android:layout_width="270px"-->
+                <!--android:layout_height="270px"-->
+        <!--/>-->
+
+        <!--<ImageView-->
+                <!--android:src="@drawable/duvida"-->
+                <!--android:layout_width="270px"-->
+                <!--android:layout_height="270px"-->
+        <!--/>-->
+
+        <!--<ImageView-->
+                <!--android:src="@drawable/duvida"-->
+                <!--android:layout_width="270px"-->
+                <!--android:layout_height="270px"-->
+        <!--/>-->
+
+        <!--<ImageView-->
+                <!--android:src="@drawable/duvida"-->
+                <!--android:layout_width="270px"-->
+                <!--android:layout_height="270px"-->
+        <!--/>-->
+
+        <!--<ImageView-->
+                <!--android:src="@drawable/duvida"-->
+                <!--android:layout_width="270px"-->
+                <!--android:layout_height="270px"-->
+        <!--/>-->
+
+        <!--<ImageView-->
+                <!--android:src="@drawable/duvida"-->
+                <!--android:layout_width="270px"-->
+                <!--android:layout_height="270px"-->
+        <!--/>-->
+
+        <!--<ImageView-->
+                <!--android:src="@drawable/duvida"-->
+                <!--android:layout_width="270px"-->
+                <!--android:layout_height="270px"-->
+        <!--/>-->
+
+        <!--<ImageView-->
+                <!--android:src="@drawable/duvida"-->
+                <!--android:layout_width="270px"-->
+                <!--android:layout_height="270px"-->
+        <!--/>-->
+
+        <!--<ImageView-->
+                <!--android:src="@drawable/duvida"-->
+                <!--android:layout_width="270px"-->
+                <!--android:layout_height="270px"-->
+        <!--/>-->
+
+        <!--<ImageView-->
+                <!--android:src="@drawable/duvida"-->
+                <!--android:layout_width="270px"-->
+                <!--android:layout_height="270px"-->
+        <!--/>-->
+
+        <!--<ImageView-->
+                <!--android:src="@drawable/duvida"-->
+                <!--android:layout_width="270px"-->
+                <!--android:layout_height="270px"-->
+        <!--/>-->
+
+        <!--<ImageView-->
+                <!--android:src="@drawable/duvida"-->
+                <!--android:layout_width="270px"-->
+                <!--android:layout_height="270px"-->
+        <!--/>-->
+
+    <!--</GridLayout>-->
+
+</LinearLayout>
