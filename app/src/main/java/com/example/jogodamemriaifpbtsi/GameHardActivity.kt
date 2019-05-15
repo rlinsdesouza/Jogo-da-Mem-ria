@@ -46,7 +46,7 @@ class GameHardActivity : AppCompatActivity() {
         this.imagem1 = findViewById(R.id.ImagensIV11)
         this.imagem1.setOnClickListener({
             Toast.makeText(this,"Teste ok",Toast.LENGTH_LONG).show()
-            imagem1.setImageURI(Uri.parse("https://apiprofessoresifpbtsi.herokuapp.com/media/alana.jpg"))
+            imagem1.setImageURI(Uri.parse("http://res.cloudinary.com/deqmrmqui/image/upload/v1557696533/kpry3ib3h3tu06dxbqdf.jpg"))
         })
 
 
