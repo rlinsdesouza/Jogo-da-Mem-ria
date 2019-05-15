@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
+import com.squareup.picasso.Picasso
 
 class GameHardActivity : AppCompatActivity() {
     private lateinit var imagem1 : ImageView
@@ -45,8 +46,7 @@ class GameHardActivity : AppCompatActivity() {
 
         this.imagem1 = findViewById(R.id.ImagensIV11)
         this.imagem1.setOnClickListener({
-            Toast.makeText(this,"Teste ok",Toast.LENGTH_LONG).show()
-            imagem1.setImageURI(Uri.parse("http://res.cloudinary.com/deqmrmqui/image/upload/v1557696533/kpry3ib3h3tu06dxbqdf.jpg"))
+            Picasso.get().load("http://res.cloudinary.com/deqmrmqui/image/upload/v1557696533/kpry3ib3h3tu06dxbqdf.jpg").into(this.imagem1)
         })
 
 

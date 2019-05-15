@@ -6,9 +6,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var view: ImageView
+    private lateinit var teste: TextView
     private lateinit var btiniciar : Button
     private val GAME_HARD = 1
 
@@ -22,8 +30,44 @@ class MainActivity : AppCompatActivity() {
             startActivity(it)
         })
 
-        this.view = findViewById(R.id.teste)
-        this.view.setImageURI(Uri.parse("https://apiprofessoresifpbtsi.herokuapp.com/media/alana.jpg"))
+        this.teste = findViewById(R.id.teste)
+
+        val queue = Volley.newRequestQueue(this)
+        val url = "https://apiprofessoresifpbtsi.herokuapp.com/professores/"
+
+//        val stringResquest = StringRequest (
+//            Request.Method.GET, url, Response.Listener<String> { response ->
+//            teste.text = "response is: ${response.substring(0,500)}"
+//        },
+//            Response.ErrorListener { teste.text = "Não funcionou" })
+//
+//        queue.add(stringResquest)
+
+//        queue.add(stringResquest)
+
+//        val jsonArrayResquest = JsonArrayRequest (
+//            Request.Method.GET, url, null,
+//            Response.Listener { response ->
+//                teste.text = "response is: %s".format(response.toString().substring(0,500))
+//            },
+//            Response.ErrorListener { teste.text = "Não funcionou" })
+//
+//
+//        queue.add(jsonArrayResquest)
+
+        val jsonObjectResquest = JsonObjectRequest (
+            Request.Method.GET, url, null,
+            Response.Listener { response ->
+                val professores = listOf(response.getJSONArray("results"))
+//                professores = arrayOf(response["results"])
+                teste.text = "response is: %s".format(professores[0].toString().substring(0,500))
+            },
+            Response.ErrorListener { teste.text = "Não funcionou" })
+
+
+        queue.add(jsonObjectResquest)
+
+
 
 
 
