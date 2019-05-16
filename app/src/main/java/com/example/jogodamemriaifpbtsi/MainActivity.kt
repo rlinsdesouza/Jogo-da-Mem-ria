@@ -58,9 +58,15 @@ class MainActivity : AppCompatActivity() {
         val jsonObjectResquest = JsonObjectRequest (
             Request.Method.GET, url, null,
             Response.Listener { response ->
-                val professores = listOf(response.getJSONArray("results"))
-//                professores = arrayOf(response["results"])
-                teste.text = "response is: %s".format(professores[0].toString().substring(0,500))
+                val data = response.getJSONArray("results")
+                val professores:List<Any>
+
+                teste.text = "response is: %s".format(data.toString().substring(0,500))
+
+
+//                teste.text = "response is: %s".format(data.getJSONObject(0).toString().substring(0,500))
+
+
             },
             Response.ErrorListener { teste.text = "Não funcionou" })
 
