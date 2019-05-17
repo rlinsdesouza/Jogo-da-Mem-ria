@@ -28,8 +28,6 @@ class GameHardActivity : AppCompatActivity() {
     private lateinit var baseImagens: List<Object>
     private lateinit var ImagensEmJogo: List<String>
 
-    private lateinit var primeiraImagem : Integer
-    private lateinit var segundaImagem : Integer
     private lateinit var primeiroClick : Integer
     private lateinit var segundoClick : Integer
     private lateinit var NumeroImagem: Integer
@@ -50,6 +48,10 @@ class GameHardActivity : AppCompatActivity() {
         })
 
 
+
+    }
+
+    fun verificaClick () {
 
     }
 }
