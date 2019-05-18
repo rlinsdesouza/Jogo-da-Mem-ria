@@ -70,7 +70,6 @@ class GameHardActivity : AppCompatActivity() {
             if(primeiroClick == null || segundoClick != null) {
                 if(segundoClick == null){
                     primeiroClick = professor
-                    Log.i("APP_TESTE",String.format("Primeiro: %s",primeiroClick!!.tag))
                     primeiroClick!!.setClickable(true);
                 }else{
                     primeiroClick!!.setImageResource(R.drawable.duvida)
@@ -81,13 +80,11 @@ class GameHardActivity : AppCompatActivity() {
                     segundoClick = null
                     primeiroClick = professor
                     primeiroClick!!.setClickable(true);
-                    Log.i("APP_TESTE",String.format("Primeiro/Tercerio: %s",primeiroClick!!.tag))
                 }
 //                professor.setClickable(false);
             }else {
                 segundoClick = professor
                 if(primeiroClick!!.tag.equals(segundoClick!!.tag)){
-                    Log.i("APP_TESTE",String.format("Segundo certo: %s",professor.tag))
                     primeiroClick!!.setClickable(true);
                     segundoClick!!.setClickable(true);
                     primeiroClick = null
@@ -96,9 +93,7 @@ class GameHardActivity : AppCompatActivity() {
                     if(acertos == (intent.getIntExtra("NIVEL",8)/2)) {
                         Toast.makeText(this@GameHardActivity, "Finish",Toast.LENGTH_LONG).show()
                     }
-//                    professor.setClickable(false);
                 }else{
-                    Log.i("APP_TESTE",String.format("Segundo erro: %s",professor.tag))
                     erros++
                     errosTV.text = erros.toString()
                     segundoClick!!.setClickable(true);

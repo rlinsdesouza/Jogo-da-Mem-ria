@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btiniciarMedio : Button
     private lateinit var btiniciarDificil : Button
     private lateinit var btListarProfessores:Button
+    private lateinit var btListarRecords:Button
+
 
     private val GAME_HARD = 1
 
@@ -55,7 +57,14 @@ class MainActivity : AppCompatActivity() {
 
         this.btListarProfessores = findViewById(R.id.MainBTListarProfessores)
         this.btListarProfessores.setOnClickListener({
+            val it = Intent(this,ListagemProfessorActivity::class.java)
+            startActivity(it)
+        })
+
+        this.btListarRecords = findViewById(R.id.MainBTListarRecords)
+        this.btListarRecords.setOnClickListener({
             val it = Intent()
+            startActivity(it)
         })
 
 
