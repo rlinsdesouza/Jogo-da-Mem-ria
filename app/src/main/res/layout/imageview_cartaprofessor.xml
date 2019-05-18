@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!--https://o7planning.org/en/10473/android-gridview-tutorial-->
+        <!--https://guides.codepath.com/android/Using-a-BaseAdapter-with-ListView-->
+<LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+>
+    <ImageView
+            android:id="@+id/ImageViewFlag"
+            android:layout_width="65px"
+            android:layout_height="65px"
+    />
+
+</LinearLayout>
+

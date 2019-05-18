@@ -1,5 +1,6 @@
 package com.example.jogodamemriaifpbtsi
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,7 +12,7 @@ import com.squareup.picasso.Picasso
 import org.json.JSONObject
 
 class GameHardActivity : AppCompatActivity() {
-    private lateinit var ListImageView : MutableList<ImageView>
+    private var ListImageView : MutableList<ImageView> = ArrayList<ImageView>()
     private lateinit var gridview : GridView
     private lateinit var baseImagens: List<Object>
     private lateinit var ImagensEmJogo: List<String>
@@ -41,6 +42,7 @@ class GameHardActivity : AppCompatActivity() {
 
     }
 
+
     override fun onResume() {
         super.onResume()
         var imageView : ImageView = ImageView(this)
@@ -52,8 +54,8 @@ class GameHardActivity : AppCompatActivity() {
             imageView.setTag(i)
             this.ListImageView.add(imageView)
         }
-        adapter = ArrayAdapter(this,R.id.GameGVid,this.ListImageView)
-        this.gridview.addView()
+        adapter = ArrayAdapter(this,R.layout.imageview_cartaprofessor ,this.ListImageView)
+        this.gridview.adapter = adapter
 //        for(professor:JSONObject in professores) {
 //            imageView = ImageView(this)
 //            imageView.setImageResource(R.drawable.duvida)
