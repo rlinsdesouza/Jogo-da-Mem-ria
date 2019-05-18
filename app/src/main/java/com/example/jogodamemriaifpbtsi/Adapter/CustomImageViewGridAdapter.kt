@@ -9,53 +9,49 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.jogodamemriaifpbtsi.R
+import org.json.JSONObject
 
+//https://blog.alura.com.br/personalizando-uma-listview-no-android/
 class CustomImageViewGridAdapter : BaseAdapter {
 
-    private lateinit var context: Context
-    private lateinit var lista: List<ImageView>
+    private var context: Context
+    private var lista: MutableList<JSONObject>
 
-    constructor(context:Context,lista:ArrayList<ImageView>) {
+    constructor(context:Context,lista:MutableList<JSONObject>) {
         this.context = context
         this.lista = lista
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         // inflate the layout for each list row
-        if (convertView == null) {
-//            convertView = LayoutInflater.from(context).inflate(R.layout.imageview_cartaprofessor, parent, false);
+        var view : View
+//        if (convertView == null) {
+            view = LayoutInflater.from(context).inflate(R.layout.imageview_cartaprofessor, parent, false);
 //        }
-//
+
 //        // get current item to be displayed
-//        currentItem : ImageView = (ImageView) getItem(position)
-//
-//        // get the TextView for item name and item description
-//        TextView textViewItemName = (TextView)
-//        convertView.findViewById(R.id.text_view_item_name);
-//        TextView textViewItemDescription = (TextView)
-//        convertView.findViewById(R.id.text_view_item_description);
+        var jsonobject : JSONObject = lista.get(position)
+
+//        // get the ImageView for item name and item description
+        var imageViewItemFoto : ImageView = view.findViewById(R.id.ImageViewFlag) as ImageView
 //
 //        //sets the text for item name and item description from the current item object
-//        textViewItemName.setText(currentItem.getItemName());
-//        textViewItemDescription.setText(currentItem.getItemDescription());
-//
+        imageViewItemFoto.setImageResource(R.drawable.duvida)
+        imageViewItemFoto.tag = jsonobject.getString("foto")
+
 //        // returns the view for the current row
-//        return convertView;
-//    }
-//        }
+        return view;
     }
 
     override fun getItem(position: Int): Any {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return lista.get(position);
     }
 
     override fun getItemId(position: Int): Long {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return 0;
     }
 
     override fun getCount(): Int {
         return this.lista.size
     }
-
-
 }

@@ -5,68 +5,107 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
+import com.example.jogodamemriaifpbtsi.Adapter.CustomImageViewGridAdapter
 import com.example.jogodamemriaifpbtsi.DAO.DAO
 import com.example.jogodamemriaifpbtsi.DAO.ServerCallback
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.imageview_cartaprofessor.view.*
 import org.json.JSONObject
 
 class GameHardActivity : AppCompatActivity() {
-    private var ListImageView : MutableList<ImageView> = ArrayList<ImageView>()
     private lateinit var gridview : GridView
-    private lateinit var baseImagens: List<Object>
-    private lateinit var ImagensEmJogo: List<String>
 
-    private lateinit var primeiroClick : Integer
-    private lateinit var segundoClick : Integer
-    private lateinit var NumeroImagem: Integer
+    private var primeiroClick : ImageView? = null
+    private var segundoClick : ImageView? = null
 
-    private lateinit var pontos : Integer
 
     private lateinit var professores : MutableList<JSONObject>
     private lateinit var dao: DAO
-    private var qntCartas : Int = 0
+    private var qntCartas : Int = 4
+    private lateinit var errosTV: TextView
+    private var erros : Int = 0
+    private var acertos :Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_hard)
+        this.qntCartas = intent.getIntExtra("NIVEL",8)
+        this.errosTV = findViewById(R.id.GameMistakes)
+
         this.dao = DAO(this)
         dao.getProfessores(object : ServerCallback {
             override fun onSucess(result: MutableList<JSONObject>) {
                professores = result
-               Log.e("APP_TESTE",professores.toString())
+               professores = geraCartas(professores,qntCartas)
+                var adapter: CustomImageViewGridAdapter = CustomImageViewGridAdapter(this@GameHardActivity,professores)
+                var gridview : GridView = findViewById(R.id.GameGVid)
+                gridview.adapter = adapter
+
             }
         })
-//        Log.e("APP_TESTE",professores.toString())
 
-    }
-
-
-    override fun onResume() {
-        super.onResume()
-        var imageView : ImageView = ImageView(this)
-        var adapter: ArrayAdapter<ImageView>
 
         this.gridview = findViewById(R.id.GameGVid)
-        for(i in 0..16) {
-            imageView.setImageResource(R.drawable.duvida)
-            imageView.setTag(i)
-            this.ListImageView.add(imageView)
+
+        this.gridview.setOnItemClickListener(OnClickImageView())
+    }
+
+    fun geraCartas (professores: MutableList<JSONObject>,qntCartas : Int): MutableList<JSONObject> {
+        var professoresalterado:MutableList<JSONObject> = professores
+
+        professoresalterado.shuffle()
+        professoresalterado = professoresalterado.subList(0,qntCartas/2)
+        professoresalterado.addAll(professoresalterado)
+        professoresalterado.shuffle()
+        return professoresalterado
+    }
+
+    inner class OnClickImageView : AdapterView.OnItemClickListener {
+        override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            val professor = parent?.getChildAt(position)?.ImageViewFlag
+            Picasso.get().load(professor?.tag as String).into(professor)
+            if(primeiroClick == null || segundoClick != null) {
+                if(segundoClick == null){
+                    primeiroClick = professor
+                    Log.i("APP_TESTE",String.format("Primeiro: %s",primeiroClick!!.tag))
+                    primeiroClick!!.setClickable(true);
+                }else{
+                    primeiroClick!!.setImageResource(R.drawable.duvida)
+                    primeiroClick!!.setClickable(false);
+                    primeiroClick == null
+                    segundoClick!!.setImageResource(R.drawable.duvida)
+                    segundoClick!!.setClickable(false);
+                    segundoClick = null
+                    primeiroClick = professor
+                    primeiroClick!!.setClickable(true);
+                    Log.i("APP_TESTE",String.format("Primeiro/Tercerio: %s",primeiroClick!!.tag))
+                }
+//                professor.setClickable(false);
+            }else {
+                segundoClick = professor
+                if(primeiroClick!!.tag.equals(segundoClick!!.tag)){
+                    Log.i("APP_TESTE",String.format("Segundo certo: %s",professor.tag))
+                    primeiroClick!!.setClickable(true);
+                    segundoClick!!.setClickable(true);
+                    primeiroClick = null
+                    segundoClick = null
+                    acertos++
+                    if(acertos == (intent.getIntExtra("NIVEL",8)/2)) {
+                        Toast.makeText(this@GameHardActivity, "Finish",Toast.LENGTH_LONG).show()
+                    }
+//                    professor.setClickable(false);
+                }else{
+                    Log.i("APP_TESTE",String.format("Segundo erro: %s",professor.tag))
+                    erros++
+                    errosTV.text = erros.toString()
+                    segundoClick!!.setClickable(true);
+                }
+            }
         }
-        adapter = ArrayAdapter(this,R.layout.imageview_cartaprofessor ,this.ListImageView)
-        this.gridview.adapter = adapter
-//        for(professor:JSONObject in professores) {
-//            imageView = ImageView(this)
-//            imageView.setImageResource(R.drawable.duvida)
-//            imageView.setTag(professor.getString("foto"))
-//        }
-//            this.imagem1.setOnClickListener({
-//            Picasso.get().load("http://res.cloudinary.com/deqmrmqui/image/upload/v1557696533/kpry3ib3h3tu06dxbqdf.jpg").into(this.imagem1)
-//        })
-    }
-
-    fun verificaClick () {
 
     }
+
 }

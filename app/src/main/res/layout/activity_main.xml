@@ -9,57 +9,57 @@
         android:gravity="center_horizontal"
         tools:context=".MainActivity">
 
-    <!--<android.support.design.widget.CoordinatorLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="1"-->
-    <!--&gt;-->
+
 
         <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
         >
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20px"
+                    android:text="Listar professores"
+                    android:id="@+id/MainBTListarProfessores"
+            />
         </com.google.android.material.appbar.AppBarLayout>
-
-
-
-    <!--</android.support.design.widget.CoordinatorLayout>-->
-
-
-    <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="1"-->
-    <!--&gt;-->
-        <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="Jogo da Memória IFPB!"-->
-                <!--app:layout_constraintBottom_toBottomOf="parent"-->
-                <!--app:layout_constraintLeft_toLeftOf="parent"-->
-                <!--app:layout_constraintRight_toRightOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent"/>-->
-
-
-    <!--</LinearLayout>-->
 
 
 
     <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
                                                              android:layout_height="wrap_content"/>
 
-    <TextView
-            android:id="@+id/teste"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
 
 
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Iniciar jogo"
+            android:layout_margin="20px"
+            android:text="Iniciar jogo Fácil"
             android:id="@+id/MainBTIniciar"
     />
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Iniciar jogo Médio"
+            android:id="@+id/MainBTIniciarMedio"
+    />
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Iniciar jogo Difícil"
+            android:id="@+id/MainBTIniciarDificil"
+    />
+
+
+
+    <TextView
+            android:text="Aluno: Rafael Lins - TSI - IFPB - PDM - 2019.1 - Professora Valéria"
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

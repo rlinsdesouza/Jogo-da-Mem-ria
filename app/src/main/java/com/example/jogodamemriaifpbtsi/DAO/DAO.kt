@@ -21,8 +21,6 @@ class DAO {
 
         val queue = Volley.newRequestQueue(this.context)
         val url = "https://apiprofessoresifpbtsi.herokuapp.com/professores/"
-//        val professoresout:MutableList<JSONObject> = ArrayList()
-
 
         val jsonObjectResquest = JsonObjectRequest (
             Request.Method.GET, url, null,
@@ -32,14 +30,7 @@ class DAO {
                 for (i in (0..data.length()-1)) {
                     professores.add(data.getJSONObject(i))
                 }
-                Log.i("APP_TESTE",professores.toString())
                 callback.onSucess(professores)
-
-//                teste.text = "response is: %s".format(data.toString().substring(0,500))
-
-
-//                teste.text = "response is: %s".format(data.getJSONObject(0).getString("nome"))
-
             },
             Response.ErrorListener {
                 Log.e("APP_TESTE","Nao funcionou a requisicao dos professores")

@@ -21,8 +21,11 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var teste: TextView
     private lateinit var btiniciar : Button
+    private lateinit var btiniciarMedio : Button
+    private lateinit var btiniciarDificil : Button
+    private lateinit var btListarProfessores:Button
+
     private val GAME_HARD = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,17 +35,29 @@ class MainActivity : AppCompatActivity() {
         this.btiniciar = findViewById(R.id.MainBTIniciar)
         this.btiniciar.setOnClickListener({
             val it = Intent(this,GameHardActivity::class.java)
+            it.putExtra("NIVEL",4)
             startActivity(it)
         })
 
-        this.teste = findViewById(R.id.teste)
-
-        val dao = DAO(this)
-        dao.getProfessores(object : ServerCallback{
-            override fun onSucess(result: MutableList<JSONObject>) {
-                Log.e("APP_TEST", result.toString())
-            }
+        this.btiniciarMedio = findViewById(R.id.MainBTIniciarMedio)
+        this.btiniciarMedio.setOnClickListener({
+            val it = Intent(this,GameHardActivity::class.java)
+            it.putExtra("NIVEL",8)
+            startActivity(it)
         })
+
+        this.btiniciarDificil = findViewById(R.id.MainBTIniciarDificil)
+        this.btiniciarDificil.setOnClickListener({
+            val it = Intent(this,GameHardActivity::class.java)
+            it.putExtra("NIVEL",16)
+            startActivity(it)
+        })
+
+        this.btListarProfessores = findViewById(R.id.MainBTListarProfessores)
+        this.btListarProfessores.setOnClickListener({
+            val it = Intent()
+        })
+
 
 
     }

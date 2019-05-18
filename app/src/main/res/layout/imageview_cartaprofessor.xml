@@ -8,8 +8,8 @@
 >
     <ImageView
             android:id="@+id/ImageViewFlag"
-            android:layout_width="65px"
-            android:layout_height="65px"
+            android:layout_width="300px"
+            android:layout_height="300px"
     />
 
 </LinearLayout>
