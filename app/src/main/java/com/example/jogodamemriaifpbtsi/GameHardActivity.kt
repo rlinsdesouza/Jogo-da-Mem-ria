@@ -1,17 +1,25 @@
 package com.example.jogodamemriaifpbtsi
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.DialogInterface
+import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import com.example.jogodamemriaifpbtsi.Adapter.CustomImageViewGridAdapter
 import com.example.jogodamemriaifpbtsi.DAO.DAO
 import com.example.jogodamemriaifpbtsi.DAO.ServerCallback
+import com.example.jogodamemriaifpbtsi.model.Jogador
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.imageview_cartaprofessor.view.*
+import kotlinx.android.synthetic.main.modal_cadastro.*
+import kotlinx.android.synthetic.main.modal_cadastro.view.*
 import org.json.JSONObject
 
 class GameHardActivity : AppCompatActivity() {
@@ -91,7 +99,20 @@ class GameHardActivity : AppCompatActivity() {
                     segundoClick = null
                     acertos++
                     if(acertos == (intent.getIntExtra("NIVEL",8)/2)) {
-                        Toast.makeText(this@GameHardActivity, "Finish",Toast.LENGTH_LONG).show()
+//                        https@ //www.mkyong.com/android/android-custom-dialog-example/
+//                        https@ //devofandroid.blogspot.com/2018/04/alertdialog-with-custom-layout-kotlin.html
+                        var dialogoJogador = LayoutInflater.from(this@GameHardActivity).inflate(R.layout.modal_cadastro,null)
+                        var mBuilder = AlertDialog.Builder(this@GameHardActivity)
+                            .setView(dialogoJogador)
+                        var mAlertDialog = mBuilder.show()
+                            dialogoJogador.jogadorSubmit.setOnClickListener({
+                            var nome = dialogoJogador.username.text.toString()
+                            var score = erros
+                            var jogador = Jogador(nome,score.toDouble())
+                            var it = Intent(this@GameHardActivity,MainActivity::class.java)
+                            it.putExtra("JOGADOR_INSERT",jogador)
+                            startActivity(it)
+                        })
                     }
                 }else{
                     erros++

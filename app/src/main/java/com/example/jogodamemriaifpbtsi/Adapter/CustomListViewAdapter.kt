@@ -2,6 +2,7 @@ package com.example.jogodamemriaifpbtsi.Adapter
 
 import android.content.Context
 import android.media.Image
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +34,7 @@ class CustomListViewAdapter : BaseAdapter {
 
 //        // get current item to be displayed
         var professor : JSONObject = lista.get(position)
-
+        Log.i("APP_TESTE", professor.toString())
 //        // get the ItemListView
         var imageViewProfessor : ImageView = view.findViewById(R.id.lista_imagem_professor) as ImageView
         var nomeTVProfessor: TextView = view.findViewById(R.id.lista_professor_nome) as TextView

@@ -1,6 +1,7 @@
 package com.example.jogodamemriaifpbtsi
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +21,7 @@ class ListagemProfessorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listagem_professor)
+//        setContentView(R.layout.content_listagem_professor)
         setSupportActionBar(toolbar)
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -29,8 +31,10 @@ class ListagemProfessorActivity : AppCompatActivity() {
         dao.getProfessores(object : ServerCallback {
             override fun onSucess(result: MutableList<JSONObject>) {
                 professores = result
+//                Log.i("APP_TESTE",String.format("%s",professores))
                 var adapter: CustomListViewAdapter = CustomListViewAdapter(this@ListagemProfessorActivity,professores)
                 var listview : ListView = findViewById(R.id.ListProfessores)
+//                listview.adapter = ArrayAdapter<JSONObject> (this@ListagemProfessorActivity,android.R.layout.simple_list_item_1,professores)
                 listview.adapter = adapter
             }
         })
